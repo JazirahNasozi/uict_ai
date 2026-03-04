@@ -66,12 +66,15 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-md p-4">
-      <Card className="w-full shadow-lg">
+    <div className="w-full max-w-sm md:max-w-md p-0 sm:p-0">
+      <Card className="w-full shadow-lg rounded-xl">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Create Account</h1>
-          <p className="text-gray-600 text-sm">Join the UICT intelligent learning community</p>
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold text-2xl">D</span>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h1>
+          <p className="text-gray-600 text-sm">Join the professional AI learning platform for schools.</p>
         </div>
 
         {/* Form */}
@@ -85,11 +88,11 @@ export default function RegisterPage() {
           {/* Role Selection */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Who are you?</label>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, role: 'student' })}
-                className={`py-3 rounded-lg font-medium transition-all ${
+                className={`py-2 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all text-sm sm:text-base ${
                   formData.role === 'student'
                     ? 'bg-blue-600 text-white shadow-md'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -100,7 +103,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, role: 'lecturer' })}
-                className={`py-3 rounded-lg font-medium transition-all ${
+                className={`py-2 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all text-sm sm:text-base ${
                   formData.role === 'lecturer'
                     ? 'bg-purple-600 text-white shadow-md'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -159,7 +162,7 @@ export default function RegisterPage() {
           />
 
           <Button type="submit" variant="success" size="md" fullWidth loading={loading}>
-            {loading ? 'Creating account...' : 'Get Started'}
+            {loading ? 'Creating account...' : 'Sign Up for Free'}
           </Button>
 
           <div className="text-center text-sm text-gray-600">
@@ -169,6 +172,11 @@ export default function RegisterPage() {
             </Link>
           </div>
         </form>
+
+        {/* Footer Links */}
+        <div className="mt-6 pt-6 border-t border-gray-200 text-center text-xs text-gray-500 space-y-1">
+          <div>Privacy Policy • Terms of Service • Cookie Settings</div>
+        </div>
       </Card>
     </div>
   );

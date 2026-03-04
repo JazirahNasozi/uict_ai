@@ -69,15 +69,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-full max-w-md p-4">
-      <Card className="w-full shadow-lg">
+    <div className="w-full max-w-sm md:max-w-md p-0 sm:p-0">
+      <Card className="w-full shadow-lg rounded-xl">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-linear-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-2xl">UA</span>
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-white font-bold text-2xl">D</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">UICT AI</h1>
-          <p className="text-gray-600 text-sm">Your assistant for learning and campus services</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Pearl_labs uict AI</h1>
+          <p className="text-gray-600 text-sm">Log in to your professional AI learning dashboard</p>
         </div>
 
         {/* Form */}
@@ -91,7 +91,7 @@ export default function LoginPage() {
           <Input
             label="Email address"
             type="email"
-            placeholder="your.email@uict.ac.ug"
+            placeholder="name@email.edu"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             error={errors.email}
@@ -107,43 +107,20 @@ export default function LoginPage() {
           />
 
           <Button type="submit" variant="primary" size="md" fullWidth loading={loading}>
-            {loading ? 'Signing in...' : 'Log in'}
+            {loading ? 'Signing in...' : 'Log In to Pearl_labs uict AI'}
           </Button>
 
           <div className="text-center text-sm text-gray-600">
             Don't have an account?{' '}
             <Link href="/register" className="text-blue-600 font-medium hover:underline">
-              Create an account
+              Sign up for free
             </Link>
           </div>
         </form>
 
-        {/* Demo Credentials */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <p className="text-xs text-gray-500 text-center mb-3 font-medium">DEMO CREDENTIALS</p>
-          <div className="grid grid-cols-3 gap-2">
-            <button
-              onClick={() => handleDemoLogin('student')}
-              disabled={loading}
-              className="text-xs px-2 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 disabled:opacity-50 transition-colors"
-            >
-              Student
-            </button>
-            <button
-              onClick={() => handleDemoLogin('lecturer')}
-              disabled={loading}
-              className="text-xs px-2 py-2 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 disabled:opacity-50 transition-colors"
-            >
-              Lecturer
-            </button>
-            <button
-              onClick={() => handleDemoLogin('admin')}
-              disabled={loading}
-              className="text-xs px-2 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 disabled:opacity-50 transition-colors"
-            >
-              Admin
-            </button>
-          </div>
+        {/* Footer Links */}
+        <div className="mt-6 pt-6 border-t border-gray-200 text-center text-xs text-gray-500 space-y-1">
+          <div>Privacy Policy • Terms of Service • Cookie Settings</div>
         </div>
       </Card>
     </div>

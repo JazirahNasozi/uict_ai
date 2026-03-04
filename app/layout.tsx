@@ -3,8 +3,8 @@ import './globals.css';
 import ClientAuthProvider from './ClientAuthProvider';
 
 export const metadata: Metadata = {
-  title: 'UICT AI - Intelligent Learning Assistant',
-  description: 'Your assistant for learning and campus services',
+  title: 'Pearl_labs uict AI - Chat Dashboard',
+  description: 'Professional AI learning platform for schools',
   icons: {
     icon: [{ url: '/favicon.ico' }],
   },
