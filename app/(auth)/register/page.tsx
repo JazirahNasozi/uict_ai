@@ -14,10 +14,8 @@ export default function RegisterPage() {
   const router = useRouter();
   const { login, user, isLoading } = useAuth();
   const [formData, setFormData] = useState({
-    name: '',
+    schoolName: '',
     email: '',
-    role: 'student' as UserRole,
-    studentId: '',
     password: '',
     confirmPassword: '',
   });
@@ -27,14 +25,11 @@ export default function RegisterPage() {
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.name) newErrors.name = 'Full name is required';
+    if (!formData.schoolName) newErrors.schoolName = 'School name is required';
     if (!formData.email) newErrors.email = 'Email is required';
     if (!formData.password) newErrors.password = 'Password is required';
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
-    }
-    if (formData.role === 'student' && !formData.studentId) {
-      newErrors.studentId = 'Student number is required';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -53,7 +48,14 @@ export default function RegisterPage() {
     setLoading(true);
     setGeneralError('');
     try {
-      const user = await registerUser(formData);
+      const payload = {
+        name: formData.schoolName,
+        email: formData.email,
+        role: 'student' as UserRole,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+      };
+      const user = await registerUser(payload as any);
       if (user) {
         login(user);
         router.push('/dashboard');
@@ -85,63 +87,24 @@ export default function RegisterPage() {
             </div>
           )}
 
-          {/* Role Selection */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Who are you?</label>
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, role: 'student' })}
-                className={`py-2 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all text-sm sm:text-base ${
-                  formData.role === 'student'
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                Student
-              </button>
-              <button
-                type="button"
-                onClick={() => setFormData({ ...formData, role: 'lecturer' })}
-                className={`py-2 sm:py-3 px-3 sm:px-4 rounded-lg font-medium transition-all text-sm sm:text-base ${
-                  formData.role === 'lecturer'
-                    ? 'bg-purple-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                Lecturer
-              </button>
-            </div>
-          </div>
 
           <Input
-            label="Full Name"
+            label="School Name"
             type="text"
-            placeholder="John Mukasa"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            error={errors.name}
+            placeholder="Eg. UICT"
+            value={formData.schoolName}
+            onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
+            error={errors.schoolName}
           />
 
           <Input
             label="Official Email"
             type="email"
-            placeholder="john.mukasa@uict.ac.ug"
+            placeholder="name@school.edu"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             error={errors.email}
           />
-
-          {formData.role === 'student' && (
-            <Input
-              label="Student Number"
-              type="text"
-              placeholder="e.g., UICT/2021/001"
-              value={formData.studentId}
-              onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
-              error={errors.studentId}
-            />
-          )}
 
           <Input
             label="Password"
@@ -160,6 +123,10 @@ export default function RegisterPage() {
             onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
             error={errors.confirmPassword}
           />
+
+          <Button type="button" variant="outline" size="md" fullWidth onClick={() => alert('Google sign-in not implemented')}>
+            Continue with Google
+          </Button>
 
           <Button type="submit" variant="success" size="md" fullWidth loading={loading}>
             {loading ? 'Creating account...' : 'Sign Up for Free'}

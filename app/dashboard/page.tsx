@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 
 export default function DashboardHome() {
+  const router = useRouter();
   const { user } = useAuth();
   const firstName = user?.name?.split(' ')[0] || 'there';
 
@@ -27,11 +29,21 @@ export default function DashboardHome() {
         </div>
 
         <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-gray-500">
-          <span className="px-3 py-1 bg-gray-100 rounded-full">Writing</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full">Exam Practice</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full">Presentation</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full">Mocks</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full">Create Image</span>
+          {[
+            {label: '✍️ Writing', href: '/dashboard/writing'},
+            {label: '📚 Exam Practice', href: '/dashboard/exam-practice'},
+            {label: '📊 Presentation', href: '/dashboard/presentation'},
+            {label: '🎭 Mocks', href: '/dashboard/mocks'},
+            {label: '🎨 Create Image', href: '/dashboard/create-image'},
+          ].map(item => (
+            <button
+              key={item.href}
+              onClick={() => router.push(item.href)}
+              className="px-3 py-1 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       </div>
     </div>

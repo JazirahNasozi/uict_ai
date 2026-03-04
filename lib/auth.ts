@@ -62,9 +62,11 @@ export async function registerUser(data: RegisterFormData): Promise<User | null>
 
   const newUser: User & { password: string } = {
     id: String(Object.keys(MOCK_USERS).length + 1),
+    // store school name in name field for now
     name: data.name,
     email: data.email,
-    role: data.role,
+    // default role to student if not provided
+    role: data.role || 'student',
     studentId: data.studentId,
     department: 'Not specified',
     status: 'active',

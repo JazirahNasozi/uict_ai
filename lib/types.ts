@@ -27,12 +27,14 @@ export interface LoginFormData {
 }
 
 export interface RegisterFormData {
+  // the `name` field represents the school name in the current UI
   name: string;
   email: string;
-  role: UserRole;
-  studentId?: string;
   password: string;
   confirmPassword: string;
+  // optional metadata retained for compatibility
+  role?: UserRole;
+  studentId?: string;
 }
 
 // Conversation

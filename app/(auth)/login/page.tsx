@@ -106,6 +106,10 @@ export default function LoginPage() {
             error={errors.password}
           />
 
+          <Button type="button" variant="outline" size="md" fullWidth onClick={() => alert('Google sign-in not implemented')}>
+            Continue with Google
+          </Button>
+
           <Button type="submit" variant="primary" size="md" fullWidth loading={loading}>
             {loading ? 'Signing in...' : 'Log In to Pearl_labs uict AI'}
           </Button>

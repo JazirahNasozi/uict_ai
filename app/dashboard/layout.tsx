@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/app/components/Navbar';
 import Sidebar from '@/app/components/Sidebar';
@@ -33,7 +35,7 @@ export default function DashboardLayout({
           </div>
           
           {/* Main content */}
-          <main className="flex-1 overflow-auto">
+          <main className={`flex-1 overflow-auto ${sidebarOpen ? 'lg:ml-0 ml-64' : ''}`}>
             {children}
           </main>
         </div>

@@ -21,7 +21,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40">
+    <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Menu button for mobile + Logo */}
@@ -38,7 +38,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
               </button>
             )}
             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-linear-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs sm:text-sm">UA</span>
+              <img src="/pearl-logo.png" alt="Pearl_labs uict AI" className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
             <Link href="/" className="font-bold text-gray-900 text-sm sm:text-lg hidden sm:block">
               Pearl_labs uict AI
