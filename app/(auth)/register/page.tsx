@@ -78,8 +78,8 @@ export default function RegisterPage() {
             <Image
               src="/peral-logo.png"
               alt="Pearl Labs UICT AI Logo"
-              width={200}
-              height={200}
+              width={140}
+              height={140}
             />
           </div>
            <h1 className="text-2xl font-bold text-gray-900 mb-2">
