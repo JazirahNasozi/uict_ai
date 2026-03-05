@@ -79,8 +79,8 @@ export default function LoginPage() {
     <Image
       src="/peral-logo.png"
       alt="Pearl Labs UICT AI Logo"
-      width={160}
-      height={160}
+      width={100}
+      height={100}
     />
   </div>
 
