@@ -26,8 +26,14 @@ export default function Home() {
       <div className="w-full max-w-2xl">
         {/* Hero Section */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-6">
-            <span className="text-white font-bold text-3xl">D</span>
+          <div className="flex justify-center mb-6">
+            <Image
+            src="/peral-logo.png"
+            alt="Pearl Labs UICT AI Logo"
+            width={100}
+            height={100}
+            priority
+            />
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4">Welcome to Pearl_labs uict AI</h1>
           <p className="text-base sm:text-lg text-gray-600 mb-8">The professional AI learning platform built for schools and institutions</p>
@@ -64,7 +70,7 @@ export default function Home() {
 
         {/* Footer */}
         <div className="mt-12 sm:mt-16 text-center text-xs sm:text-sm text-gray-600 space-y-2 sm:space-y-1">
-          <div>© 2024 Pearl_labs uict AI. All rights reserved.</div>
+          <div>© 2026 Pearl_labs uict AI. All rights reserved.</div>
           <div className="flex justify-center gap-4 sm:gap-6">
             <a href="#" className="hover:text-gray-900 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-gray-900 transition-colors">Terms of Service</a>
