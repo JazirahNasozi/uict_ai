@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { registerUser } from '@/lib/auth';
@@ -68,14 +69,23 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="w-full max-w-sm md:max-w-md p-0 sm:p-0">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <div className="w-full max-w-sm md:max-w-md p-4">
       <Card className="w-full shadow-lg rounded-xl">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-2xl">D</span>
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/peral-logo.png"
+              alt="Pearl Labs UICT AI Logo"
+              width={200}
+              height={200}
+            />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h1>
+           <h1 className="text-2xl font-bold text-gray-900 mb-2">
+         Pearl Labs UICT AI
+          </h1>
+          <h2 className="text-2xl  text-gray-900 mb-2">Create Your Account</h2>
           <p className="text-gray-600 text-sm">Join the professional AI learning platform for schools.</p>
         </div>
 
@@ -88,14 +98,29 @@ export default function RegisterPage() {
           )}
 
 
-          <Input
-            label="School Name"
-            type="text"
-            placeholder="Eg. UICT"
-            value={formData.schoolName}
-            onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
-            error={errors.schoolName}
-          />
+          <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+    School Name
+  </label>
+
+  <select
+    value={formData.schoolName}
+    onChange={(e) =>
+      setFormData({ ...formData, schoolName: e.target.value })
+    }
+    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <option value="">Select your school</option>
+    <option value="UICT">Uganda Institute of Information and Communications Technology (UICT)</option>
+    <option value="Makerere">Makerere University</option>
+    <option value="Kyambogo">Kyambogo University</option>
+    <option value="MUBS">Makerere University Business School</option>
+  </select>
+
+  {errors.schoolName && (
+    <p className="text-sm text-red-500 mt-1">{errors.schoolName}</p>
+  )}
+</div>
 
           <Input
             label="Official Email"
@@ -124,7 +149,7 @@ export default function RegisterPage() {
             error={errors.confirmPassword}
           />
 
-          <Button type="button" variant="outline" size="md" fullWidth onClick={() => alert('Google sign-in not implemented')}>
+          <Button type="button" variant="secondary" size="md" fullWidth onClick={() => alert('Google sign-in not implemented')}>
             Continue with Google
           </Button>
 
@@ -145,6 +170,7 @@ export default function RegisterPage() {
           <div>Privacy Policy • Terms of Service • Cookie Settings</div>
         </div>
       </Card>
+    </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import Button from './Button';
@@ -37,9 +38,12 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
                 </svg>
               </button>
             )}
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-linear-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <img src="/pearl-logo.png" alt="Pearl_labs uict AI" className="w-6 h-6 sm:w-8 sm:h-8" />
-            </div>
+            <Image
+              src="/peral-logo.png"
+              alt="Pearl Labs UICT AI Logo"
+              width={48}
+              height={48}
+            />
             <Link href="/" className="font-bold text-gray-900 text-sm sm:text-lg hidden sm:block">
               Pearl_labs uict AI
             </Link>
